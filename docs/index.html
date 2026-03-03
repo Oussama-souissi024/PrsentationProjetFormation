@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formation .NET Ecommerce - Oussama Souissi</title>
+    <title>Formation .NET Ecommerce Pro - Oussama Souissi</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #512BD4;
+            --primary-light: #7B3FF2;
+            --secondary: #00CEC9;
+            --accent: #6C5CE7;
+            --dark: #1E1E2F;
+            --light: #F8F9FA;
+            --glass: rgba(255, 255, 255, 0.7);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,707 +30,552 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+            padding: 0 20px;
         }
 
-        .header {
-            background: linear-gradient(135deg, #512BD4 0%, #7B3FF2 100%);
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
-            padding: 40px;
+            padding: 100px 0 150px;
             text-align: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1.1;
         }
 
-        .header .subtitle {
-            font-size: 1.2em;
+        .hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.4rem);
             opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-weight: 300;
         }
 
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* --- Warning Banner --- */
         .warning-banner {
-            background: #ff6b6b;
+            background: #ff4757;
             color: white;
             padding: 15px;
             text-align: center;
-            font-weight: bold;
-            font-size: 1.1em;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+            font-weight: 700;
+            font-size: 1rem;
         }
 
-        .content {
+        /* --- Main Content --- */
+        .section-wrapper {
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
             padding: 40px;
-        }
-
-        .section {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
             margin-bottom: 40px;
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            border-left: 5px solid #512BD4;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .section h2 {
-            color: #512BD4;
-            font-size: 1.8em;
-            margin-bottom: 20px;
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.8rem;
+        }
+
+        .section-title i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        /* --- Info Grid --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .info-item {
+            padding: 25px;
+            border-radius: 15px;
+            background: var(--light);
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-item h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .info-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .info-card h3 {
-            color: #512BD4;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .info-card p {
-            color: #333;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        .github-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .github-card {
-            background: linear-gradient(135deg, #24292e 0%, #363b42 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: block;
-        }
-
-        .github-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .github-card h3 {
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-
-        .github-card p {
-            opacity: 0.8;
-            font-size: 0.9em;
-        }
-
-        .pricing-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .pricing-section h2 {
-            color: white;
-        }
-
-        .pricing-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .pricing-card {
-            background: white;
-            color: #333;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .pricing-card:hover {
-            transform: scale(1.05);
-        }
-
-        .pricing-card .price {
-            font-size: 2.5em;
-            color: #512BD4;
-            font-weight: bold;
-            margin: 15px 0;
-        }
-
-        .pricing-card .old-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 1.2em;
-        }
-
-        .pricing-card .badge {
-            background: #4CAF50;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .payment-methods {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        .payment-methods h3 {
-            color: #512BD4;
-            margin-bottom: 15px;
-        }
-
-        .payment-methods ul {
+        .info-item ul {
             list-style: none;
         }
 
-        .payment-methods li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
+        .info-item li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
         }
 
-        .payment-methods li:last-child {
-            border-bottom: none;
+        .info-item li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 900;
         }
 
-        .payment-methods strong {
-            color: #512BD4;
+        /* --- Pricing Section --- */
+        .pricing-box {
+            background: var(--dark);
+            color: white;
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #2D3436 0%, #1E1E2F 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .video-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .pricing-box::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(150px);
+            top: -150px;
+            right: -150px;
+            opacity: 0.3;
+        }
+
+        .price-tag {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 20px 0;
             color: white;
         }
 
-        .video-section h2 {
-            color: white;
+        .price-tag span {
+            font-size: 1.5rem;
+            opacity: 0.7;
         }
 
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
 
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 206, 201, 0.4);
+        }
+
+        /* --- Video Cards --- */
         .video-card {
             background: white;
-            color: #333;
-            padding: 20px;
             border-radius: 15px;
-            text-align: center;
+            overflow: hidden;
+            border: 1px solid #eee;
         }
 
-        .video-card h3 {
-            color: #512BD4;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .video-card a {
-            display: inline-block;
-            background: linear-gradient(135deg, #512BD4 0%, #7B3FF2 100%);
+        .video-thumb {
+            height: 180px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        .video-card a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(81, 43, 212, 0.4);
+        .video-thumb:hover {
+            opacity: 0.9;
         }
 
-        .cta-section {
-            text-align: center;
-            padding: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .cta-section h2 {
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-        }
-
-        .contact-info {
-            background: white;
+        .video-body {
             padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-top: 20px;
+            text-align: center;
         }
 
-        .contact-info p {
-            color: #333;
-        }
-
-        .contact-info strong {
-            color: #512BD4;
-        }
-
-        .contact-info a {
-            color: #512BD4;
+        /* --- GitHub Cards --- */
+        .repo-card {
+            background: #24292e;
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: var(--transition);
         }
 
-        .contact-info a:hover {
-            text-decoration: underline;
+        .repo-card:hover {
+            background: #2f363d;
+            transform: translateX(10px);
         }
 
+        .repo-icon {
+            font-size: 2.5rem;
+        }
+
+        /* --- Profile Section --- */
+        .profile-card {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            flex-shrink: 0;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Footer / CTA --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 25px;
+            border-radius: 50px;
+            margin: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Responsive --- */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
+            .hero {
+                padding: 60px 0 100px;
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             }
 
-            .container {
-                border-radius: 10px;
+            .section-wrapper {
+                margin-top: -40px;
             }
 
-            .header {
-                padding: 25px 15px;
+            .card {
+                padding: 25px;
+                border-radius: 15px;
             }
 
-            .header h1 {
-                font-size: 1.5em;
-                line-height: 1.3;
-            }
-
-            .header .subtitle {
-                font-size: 0.9em;
-            }
-
-            .warning-banner {
-                padding: 12px 15px;
-                font-size: 0.85em;
-            }
-
-            .content {
-                padding: 15px;
-            }
-
-            .section {
-                padding: 15px;
-            }
-
-            .section h2 {
-                font-size: 1.3em;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .info-card {
-                padding: 15px;
-            }
-
-            .info-card h3 {
-                font-size: 1.1em;
-            }
-
-            .info-card ul {
-                margin-left: 15px !important;
-                font-size: 0.9em;
-            }
-
-            .github-links {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .github-card {
-                padding: 20px 15px;
-            }
-
-            .github-card h3 {
-                font-size: 1.1em;
-            }
-
-            .video-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .video-card {
-                padding: 15px;
-            }
-
-            .video-card h3 {
-                font-size: 1.1em;
-            }
-
-            .pricing-options {
-                grid-template-columns: 1fr !important;
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
                 gap: 20px;
             }
 
-            .pricing-card {
-                padding: 20px 15px;
+            .price-tag {
+                font-size: 3rem;
             }
-
-            .pricing-card h3 {
-                font-size: 1.1em;
-            }
-
-            .pricing-card .price {
-                font-size: 1.6em !important;
-            }
-
-            .payment-methods {
-                padding: 15px;
-            }
-
-            .payment-methods li {
-                padding: 8px 0;
-                font-size: 0.9em;
-            }
-
-            .cta-section {
-                padding: 25px 15px;
-            }
-
-            .cta-section h2 {
-                font-size: 1.3em;
-            }
-
-            .cta-section p {
-                font-size: 0.95em;
-            }
-
-            .contact-info {
-                padding: 15px;
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            .contact-info p {
-                font-size: 0.9em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.2em;
-            }
-
-            .section h2 {
-                font-size: 1.1em;
-            }
-
-            .pricing-card .price {
-                font-size: 1.4em !important;
-            }
-
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .emoji {
-            font-size: 1.2em;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🚀 Formation .NET Full-Stack + Déploiement Pro</h1>
-            <p class="subtitle">Validée par des Tech Leads — Parcours Junior Professionnel</p>
-        </div>
 
-        <div class="warning-banner">
-            ⚠️ Dernières places disponibles ! Inscriptions clôturées dès que l'effectif cible est atteint
-        </div>
-
-        <div class="content">
-            <!-- Section Présentation -->
-            <div class="section">
-                <h2>📖 Présentation de la formation</h2>
-                <div class="info-card">
-                    <h3>🎯 Objectifs de la formation</h3>
-                    <p>Cette formation en <strong>.NET 8</strong> vise à construire une application <strong>Full Stack</strong> en <strong>ASP.NET Core MVC</strong>, structurée selon les principes de la <strong>Clean Architecture</strong>.</p>
-                    <p><strong>L'objectif pédagogique est double :</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Comprendre comment construire une application web MVC complète (UI, authentification, CRUD, panier, commandes)</li>
-                        <li>Apprendre à structurer le code pour le rendre maintenable, testable et évolutif (niveau "pro")</li>
-                    </ul>
-                    <p style="margin-top: 15px;">Cette formation est spécialement conçue pour les jeunes diplômés souhaitant se préparer aux entretiens techniques pour des postes de développeur .NET Junior.</p>
-                </div>
-                <div class="info-card" style="margin-top: 20px;">
-                    <h3>👨‍💻 Pour qui ?</h3>
-                    <p>🎓 <strong>Étudiants</strong> en informatique</p>
-                    <p>📄 <strong>Préparation PFE .NET</strong></p>
-                    <p>🎓 <strong>Jeunes diplômés</strong> cherchant un premier emploi</p>
-                    <p>💼 <strong>Développeurs débutants</strong> voulant monter en compétences</p>
-                </div>
-                <div class="info-card" style="margin-top: 20px;">
-                    <h3>📊 Compétences acquises - 100% couverture Junior .NET</h3>
-                    <p>Ce projet couvre <strong>100% des compétences techniques</strong> requises pour un poste de Développeur .NET Junior :</p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li><strong>C# / .NET 8</strong> - Classes, interfaces, LINQ, async/await</li>
-                        <li><strong>ASP.NET Core MVC</strong> - Controllers, Views, Razor, Validation</li>
-                        <li><strong>Entity Framework Core</strong> - DbContext, Migrations, Relations</li>
-                        <li><strong>Clean Architecture</strong> - Séparation en couches, DI, SOLID</li>
-                        <li><strong>ASP.NET Core Identity</strong> - Auth, Rôles, [Authorize]</li>
-                        <li><strong>REST API & JWT</strong> - Web API, Swagger, Authentication</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>Taux de réussite estimé en entretien technique : 80-85%</strong> (90%+ avec préparation algo + SQL)</p>
-                </div>
-                <div class="info-card" style="margin-top: 20px;">
-                    <h3>🛠️ Projets de formation</h3>
-                    <p><strong>Projet principal :</strong> Application e-commerce Full Stack en ASP.NET Core MVC avec Clean Architecture</p>
-                    <p><strong>Extension avancée :</strong> Refactoring vers architecture API + Client MVC (découplé)</p>
-                    <p style="margin-top: 10px;"><em>La partie front MVC (Razor) est construite de 0 pour assurer une compréhension totale des mécanismes (Controllers, Views, UI/UX, validation)</em></p>
-                </div>
-                <div class="info-card" style="margin-top: 20px;">
-                    <h3>🏗️ Architecture enseignée</h3>
-                    <p><strong>Clean Architecture</strong> - Le principe central : les règles métier ne dépendent pas de l'UI ni de la base de données</p>
-                    <p style="margin-top: 10px;"><strong>Avantages :</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Couches indépendantes et réutilisables</li>
-                        <li>Code maintenable et testable</li>
-                        <li>Facilité de remplacement de couche (ex: MVC → API)</li>
-                        <li>Évolutivité et flexibilité</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>Preuve par l'exemple :</strong> L'extension démontre que vous pouvez remplacer la couche Présentation MVC par une API sans modifier une seule ligne de code dans Core, Application ou Infrastructure.</p>
-                </div>
-                <div class="info-card" style="margin-top: 20px;">
-                    <h3>📚 Technologies et compétences abordées</h3>
-                    <p><strong>Core :</strong> .NET 8, C#, Clean Architecture, SOLID Principles</p>
-                    <p><strong>Backend :</strong> ASP.NET Core MVC, Entity Framework, SQL Server, Repository Pattern</p>
-                    <p><strong>Frontend :</strong> Razor Views, Controllers, UI/UX, Validation client/serveur</p>
-                    <p><strong>API :</strong> REST APIs, JWT Authentication, Swagger/OpenAPI</p>
-                    <p><strong>Outils :</strong> Git & GitHub, User Secrets, Dependency Injection, AutoMapper</p>
-                </div>
-                <div class="info-card" style="margin-top: 20px;">
-                    <h3>💡 Valeur ajoutée pour un développeur junior</h3>
-                    <p>Ce projet est conçu pour accélérer la montée en compétence sur des sujets indispensables en entreprise :</p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li><strong>Architecture logicielle professionnelle</strong> (Clean Architecture au-dessus du niveau junior attendu)</li>
-                        <li><strong>Bonnes pratiques de développement</strong> et patterns de conception</li>
-                        <li><strong>Projet complet end-to-end</strong> - pas juste un TP scolaire</li>
-                        <li><strong>Préparation aux entretiens techniques</strong> - couvre 100% des questions types</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>Postes accessibles après formation :</strong></p>
-                    <p>Développeur .NET Junior | Développeur C# Junior | Développeur Backend .NET | Développeur Full Stack .NET | Software Engineer Junior | Développeur Web ASP.NET Core</p>
-                </div>
-                <div class="info-card" style="margin-top: 20px;">
-                    <h3>✨ Fonctionnalités du projet e-commerce</h3>
-                    <p>Application couvrant un cycle e-commerce complet :</p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li><strong>Catalogue :</strong> Voir produits, détails, gestion catégories/coupons (admin)</li>
-                        <li><strong>Panier & Commandes :</strong> Ajouter au panier, appliquer coupon, passer commande, historique</li>
-                        <li><strong>Authentification :</strong> Inscription, connexion, reset mot de passe, rôles Admin/User</li>
-                        <li><strong>Extension API :</strong> Backend REST avec JWT + Client MVC consommant l'API</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Section Programme -->
-            <div class="section">
-                <h2>🎓 Durée totale de la formation</h2>
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h3>📅 Début de la formation</h3>
-                        <p><strong>15 Mars 2026</strong></p>
-                        <p>⚠️ Les places sont limitées !</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>⏱️ 32 heures de formation</h3>
-                        <p>Réparties à parts égales entre théorie et pratique</p>
-                        <p><strong>50 % théorique / 50 % pratique</strong></p>
-                    </div>
-                    <div class="info-card">
-                        <h3>🗓️ Horaires des séances</h3>
-                        <p><strong>1h30 par séance</strong></p>
-                        <p style="margin-top: 10px;"><strong>Jeudi :</strong> 19h00 → 20h30</p>
-                        <p><strong>Vendredi :</strong> 19h00 → 20h30</p>
-                        <p><strong>Dimanche :</strong> 17h00 → 18h30</p>
-                        <p style="margin-top: 10px; font-size: 0.9em; color: #666;">⚠️ <strong>Exception 15 Mars (1er jour - Ramadan) :</strong> Dimanche 20h00 → 21h30</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>💻 Lieu</h3>
-                        <p>En ligne via <strong>Google Meet</strong></p>
-                        <p>Chaque séance est enregistrée et disponible sur Google Drive</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section Présentation PDF -->
-            <div class="section">
-                <h2>📄 Présentation détaillée de la formation</h2>
-                <div class="github-links">
-                    <a href="https://github.com/Oussama-souissi024/PrsentationProjetFormationPdf/blob/main/docs/Formation-E-Commerce-Full-Stack-NET.pdf" target="_blank" class="github-card" style="background: linear-gradient(135deg, #e53935 0%, #d81b60 100%);">
-                        <h3>📋 Télécharger la présentation PDF</h3>
-                        <p>Document complet présentant la formation, le programme et les objectifs</p>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Section GitHub -->
-            <div class="section">
-                <h2>📚 Repos GitHub de la formation</h2>
-                <div class="github-links">
-                    <a href="https://github.com/Oussama-souissi024/Formation-Ecommerce" target="_blank" class="github-card">
-                        <h3>🔧 Formation Ecommerce</h3>
-                        <p>Code source principal de la formation</p>
-                    </a>
-                    <a href="https://github.com/Oussama-souissi024/Projet-Extensions-Formation-Ecommerce-Api-Client" target="_blank" class="github-card">
-                        <h3>🚀 Extensions API Client</h3>
-                        <p>Projet d'extensions pour l'API client</p>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Section Vidéos -->
-            <div class="section video-section">
-                <h2>🎬 Extraits vidéo de la formation</h2>
-                <p>Découvrez des extraits de nos séances pour avoir un aperçu de la qualité de la formation</p>
-                <div class="video-grid">
-                    <div class="video-card">
-                        <h3>📺 Séance 10</h3>
-                        <p>Extrait de la séance 10 - Découvrez notre approche pédagogique</p>
-                        <br>
-                        <a href="https://drive.google.com/file/d/1_tMx-PYoSm_HNUxkh6T59OJhKaSCTS5Z/view?usp=sharing" target="_blank">
-                            ▶️ Voir la vidéo
-                        </a>
-                    </div>
-                    <div class="video-card">
-                        <h3>📺 Séance 18</h3>
-                        <p>Extrait de la séance 18 - Approfondissement des concepts avancés</p>
-                        <br>
-                        <a href="https://drive.google.com/file/d/1RR2hlncPZ4F3H0fYN07XcEX3iA4CX79r/view?usp=sharing" target="_blank">
-                            ▶️ Voir la vidéo
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section Tarifs -->
-            <div class="section pricing-section">
-                <h2>💰 Tarif de la formation</h2>
-                
-                <!-- Résultat après formation -->
-                <div style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 20px; border-radius: 15px; margin-bottom: 25px; text-align: center;">
-                    <h3 style="margin-bottom: 15px; font-size: 1.2em;">🎯 Résultat après formation</h3>
-                    <p style="font-size: 0.95em; margin-bottom: 5px;">✅ Projet réel prêt portfolio</p>
-                    <p style="font-size: 0.95em; margin-bottom: 5px;">✅ Compétences validées par Tech Leads</p>
-                    <p style="font-size: 0.95em; margin-bottom: 5px;">✅ Préparation entretien technique .NET</p>
-                    <p style="font-size: 0.95em;">✅ Profil Junior .NET recherché</p>
-                </div>
-
-                <!-- Pack unique -->
-                <div style="background: linear-gradient(135deg, #512BD4 0%, #7B3FF2 100%); color: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 500px; margin: 0 auto;">
-                    <h3 style="margin-bottom: 10px; font-size: 1.3em;">💻 Formation .NET Full-Stack</h3>
-                    <p style="font-size: 0.95em; margin-bottom: 15px;">⏱ <strong>Durée :</strong> 32 heures</p>
-                    <div style="font-size: 2.5em; font-weight: bold; margin: 15px 0;">200 DT</div>
-                    <p style="font-size: 1em; margin-bottom: 20px;">ou <strong>2 × 120 DT</strong></p>
-                    <div style="text-align: left; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin: 20px 0;">
-                        <p style="font-size: 0.9em; margin-bottom: 5px;">✔️ C# & .NET 8</p>
-                        <p style="font-size: 0.9em; margin-bottom: 5px;">✔️ Clean Architecture</p>
-                        <p style="font-size: 0.9em; margin-bottom: 5px;">✔️ ASP.NET Core MVC</p>
-                        <p style="font-size: 0.9em; margin-bottom: 5px;">✔️ Web API & JWT</p>
-                        <p style="font-size: 0.9em; margin-bottom: 5px;">✔️ Entity Framework Core</p>
-                        <p style="font-size: 0.9em;">✔️ Projet e-commerce complet</p>
-                    </div>
-                    <p style="font-size: 0.9em; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 8px;">
-                        👉 <strong>Objectif :</strong> maîtriser le développement Full-Stack demandé en entreprise
-                    </p>
-                </div>
-
-                <div class="payment-methods">
-                    <h3>💳 Méthodes de paiement</h3>
-                    <ul>
-                        <li><strong>Par D17 :</strong> Envoyez au numéro <strong>54059294</strong></li>
-                        <li><strong>Par mandat postal :</strong> Au nom de <strong>Oussama Souissi</strong></li>
-                        <li><strong>Par Wafacash :</strong> Numéro <strong>23013879</strong></li>
-                        <li><strong>Par IZI Zitouna Payment :</strong> Numéro <strong>23013879</strong></li>
-                    </ul>
-                    <p style="margin-top: 15px; color: #512BD4; font-weight: bold;">
-                        ✅ Une fois le paiement effectué, envoyez-moi le code pour confirmer votre inscription
-                    </p>
-                </div>
-            </div>
-
-            <!-- Section Formateur -->
-            <div class="section" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-                <h2>👨‍🏫 Votre Formateur</h2>
-                <div class="info-card" style="text-align: center;">
-                    <h3 style="color: #512BD4;">Oussama Souissi</h3>
-                    <p style="font-size: 1.1em; margin: 15px 0;"><strong>Formateur .NET expérimenté</strong></p>
-                    <div style="text-align: left; margin: 20px 0; padding: 0 20px;">
-                        <p style="margin-bottom: 10px;">✅ <strong>Plusieurs années d'expérience</strong> en formation .NET</p>
-                        <p style="margin-bottom: 10px;">🌍 <strong>A formé des ingénieurs tunisiens résidant à l'étranger :</strong></p>
-                        <ul style="margin-left: 30px; margin-bottom: 15px;">
-                            <li>🇫🇷 France</li>
-                            <li>🇧🇪 Belgique</li>
-                            <li>🇩🇪 Allemagne</li>
-                            <li>🇨🇦 Canada</li>
-                            <li>🇹🇳 Tunisie</li>
-                        </ul>
-                        <p style="margin-bottom: 10px;">🎓 <strong>A formé plusieurs ingénieurs</strong> logiciels maintenant en poste</p>
-                        <p style="margin-bottom: 10px;">⭐ <strong>Recommandations vérifiables</strong> sur LinkedIn</p>
-                    </div>
-                    <p style="background: #512BD4; color: white; padding: 12px 20px; border-radius: 25px; display: inline-block; margin-top: 10px;">
-                        <a href="https://www.linkedin.com/in/oussama-souissi-289844ba/details/recommendations/?detailScreenTabIndex=0" target="_blank" style="color: white; text-decoration: none;">
-                            💼 Voir les recommandations sur LinkedIn
-                        </a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- CTA Section -->
-            <div class="cta-section">
-                <h2>🚀 Prêt à commencer votre formation ?</h2>
-                <p>Ne manquez pas cette opportunité de décrocher un poste de développeur .NET Junior !</p>
-                <div class="contact-info">
-                    <p><strong>Contact :</strong> Oussama Souissi</p>
-                    <p><strong>📞 Téléphone :</strong> 23013879</p>
-                    <p><strong>💼 LinkedIn :</strong> <a href="https://www.linkedin.com/in/oussama-souissi-289844ba/?locale=fr-FR" target="_blank" style="color: #512BD4;">Oussama Souissi</a></p>
-                </div>
-            </div>
-        </div>
+    <div class="warning-banner">
+        🔥 <span id="timer">Dernières places disponibles !</span> Inscriptions clôturées bientôt.
     </div>
+
+    <header class="hero">
+        <div class="container">
+            <span class="hero-badge">Validation par des Tech Leads</span>
+            <h1>🚀 Devenez Développeur <br>.NET Full-Stack Pro</h1>
+            <p class="subtitle">Maîtrisez ASP.NET Core 8, la Clean Architecture et le déploiement réel. Un parcours 100%
+                orienté emploi pour les juniors.</p>
+            <a href="#tarifs" class="btn btn-primary">Réserver ma place</a>
+        </div>
+    </header>
+
+    <main class="container section-wrapper">
+
+        <!-- Présentation -->
+        <section class="card">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Objectifs & Public</h2>
+            <div class="grid">
+                <div class="info-item">
+                    <h3>🎯 Vision pédagogique</h3>
+                    <p>Apprenez à construire une application e-commerce de A à Z. Ce n'est pas un simple tutoriel, c'est
+                        une <strong>immersion professionnelle</strong>.</p>
+                    <p style="margin-top:10px">Structurez votre code comme dans les meilleures entreprises (SOLID, Clean
+                        Arch).</p>
+                </div>
+                <div class="info-item">
+                    <h3>👨‍💻 Pour qui ?</h3>
+                    <ul>
+                        <li>Étudiants préparant leur PFE</li>
+                        <li>Jeunes diplômés en recherche d'emploi</li>
+                        <li>Développeurs souhaitant migrer vers .NET</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compétences -->
+        <section class="card">
+            <h2 class="section-title"><i class="fas fa-code"></i> 100% Couverture Junior .NET</h2>
+            <div class="grid">
+                <div class="info-item">
+                    <h3>🛠️ Stack Technique</h3>
+                    <ul>
+                        <li><strong>C# / .NET 8</strong> (LINQ, Async, Generics)</li>
+                        <li><strong>ASP.NET Core MVC</strong> & Razor</li>
+                        <li><strong>Entity Framework Core</strong> & SQL Server</li>
+                        <li><strong>Clean Architecture</strong> (Core, App, Infra)</li>
+                        <li><strong>Identity</strong> (Auth, Rôles, JWT)</li>
+                    </ul>
+                </div>
+                <div class="info-item">
+                    <h3>🏢 Prêt pour l'entreprise</h3>
+                    <p>Taux de réussite estimé en entretien technique : <strong>80-85%</strong>.</p>
+                    <p style="margin-top:10px">Vous saurez répondre aux questions sur les Patterns, l'Injection de
+                        Dépendances et le Middleware.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programme / Infos -->
+        <section class="card">
+            <h2 class="section-title"><i class="far fa-calendar-alt"></i> Organisation</h2>
+            <div class="grid">
+                <div class="info-item">
+                    <h3>📅 Dates & Durée</h3>
+                    <p><strong>Début :</strong> 15 Mars 2026</p>
+                    <p><strong>Total :</strong> 32 heures</p>
+                    <p><strong>Format :</strong> 50% Théorie / 50% Coding</p>
+                </div>
+                <div class="info-item">
+                    <h3>⏰ Horaires (GMT+1)</h3>
+                    <p><strong>Jeudi & Vendredi :</strong> 19h00 - 20h30</p>
+                    <p><strong>Dimanche :</strong> 17h00 - 18h30</p>
+                    <p><em>Enregistrements disponibles pour chaque séance.</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vidéos & PDF -->
+        <section class="card">
+            <h2 class="section-title"><i class="fas fa-play-circle"></i> Aperçu & Ressources</h2>
+            <div class="grid">
+                <div class="video-card">
+                    <div class="video-thumb"
+                        onclick="window.open('https://drive.google.com/file/d/1_tMx-PYoSm_HNUxkh6T59OJhKaSCTS5Z/view?usp=sharing', '_blank')">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="video-body">
+                        <h3>Extrait Séance 10</h3>
+                        <p>Méthodologie pédagogique</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumb" style="background: var(--accent)"
+                        onclick="window.open('https://drive.google.com/file/d/1RR2hlncPZ4F3H0fYN07XcEX3iA4CX79r/view?usp=sharing', '_blank')">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="video-body">
+                        <h3>Extrait Séance 18</h3>
+                        <p>Concepts avancés Clean Arch</p>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 30px;">
+                <a href="https://github.com/Oussama-souissi024/PrsentationProjetFormation/blob/main/docs/Formation-NET-Full-Stack.pdf"
+                    target="_blank" class="repo-card" style="background: #e74c3c;">
+                    <div class="repo-icon"><i class="far fa-file-pdf"></i></div>
+                    <div>
+                        <h3>Télécharger le programme complet (PDF)</h3>
+                        <p>Détails module par module</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- GitHub -->
+        <section class="card">
+            <h2 class="section-title"><i class="fab fa-github"></i> Projets Open Source</h2>
+            <div class="grid">
+                <a href="https://github.com/Oussama-souissi024/Formation-Ecommerce" target="_blank" class="repo-card">
+                    <div class="repo-icon"><i class="fas fa-box"></i></div>
+                    <div>
+                        <h3>Formation Ecommerce</h3>
+                        <p>Code source principal MVC</p>
+                    </div>
+                </a>
+                <a href="https://github.com/Oussama-souissi024/Projet-Extensions-Formation-Ecommerce-Api-Client"
+                    target="_blank" class="repo-card">
+                    <div class="repo-icon"><i class="fas fa-plug"></i></div>
+                    <div>
+                        <h3>Extensions API Client</h3>
+                        <p>Découplage API & JWT</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Tarifs -->
+        <section id="tarifs" class="pricing-box">
+            <h2 style="color: var(--secondary); margin-bottom: 10px;">Investissez dans votre futur</h2>
+            <p>Une formation intensive pour un prix accessible.</p>
+            <div class="price-tag">200 <span>DT</span></div>
+            <p style="margin-bottom: 30px;">Ou <strong>2 × 120 DT</strong> pour plus de flexibilité.</p>
+
+            <div class="grid" style="text-align: left; margin-bottom: 40px; max-width: 600px; margin: 0 auto 40px;">
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                    <h3 style="color: var(--secondary); margin-bottom: 15px; font-size: 1rem;">💳 Paiement Sécurisé</h3>
+                    <ul style="list-style: none; font-size: 0.9rem;">
+                        <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:var(--secondary)"></i>
+                            <strong>D17 :</strong> 54059294
+                        </li>
+                        <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:var(--secondary)"></i>
+                            <strong>Mandat Postal :</strong> Oussama Souissi
+                        </li>
+                        <li><i class="fas fa-check" style="color:var(--secondary)"></i> <strong>Wafacash / IZI
+                                :</strong> 23013879</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="https://www.linkedin.com/in/oussama-souissi-289844ba/?locale=fr-FR" target="_blank"
+                class="btn btn-primary">Je m'inscris maintenant</a>
+        </section>
+
+        <!-- Formateur -->
+        <section class="card">
+            <h2 class="section-title"><i class="fas fa-user-tie"></i> Votre Formateur</h2>
+            <div class="profile-card">
+                <img src="C:/Users/oussa/OneDrive/Desktop/PrsentationProjetFormationPdf/1768238679486.jpg"
+                    alt="Oussama Souissi" class="profile-img" style="object-fit: cover;">
+                <div>
+                    <h3>Oussama Souissi</h3>
+                    <p style="color: var(--primary); font-weight: 700; margin-bottom: 10px;">Formateur & Développeur
+                        Full Stack .NET (C#)</p>
+                    <p>Plusieurs années d'expérience à former des ingénieurs en <strong>Tunisie, France, Belgique,
+                            Allemagne et Canada</strong>. Mes méthodes sont approuvées par des promotions d'ingénieurs
+                        aujourd'hui en poste.</p>
+                    <div style="margin-top: 20px;">
+                        <a href="https://www.linkedin.com/in/oussama-souissi-289844ba/" target="_blank" class="btn"
+                            style="background: #0077b5; color: white; padding: 10px 25px;">
+                            <i class="fab fa-linkedin"></i> Voir les avis clients
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2>Contactez-moi directement</h2>
+            <p style="margin-bottom: 30px; opacity: 0.7;">Prêt à donner un coup de boost à votre carrière ?</p>
+
+            <div class="contact-pill">
+                <i class="fas fa-phone"></i>
+                <span>23 013 879</span>
+            </div>
+            <a href="https://www.linkedin.com/in/oussama-souissi-289844ba/" target="_blank" class="contact-pill"
+                style="text-decoration: none; color: inherit;">
+                <i class="fab fa-linkedin"></i>
+                <span>Oussama Souissi</span>
+            </a>
+
+            <p style="margin-top: 50px; font-size: 0.8rem; opacity: 0.4;">&copy; 2026 Oussama Souissi. Conçu pour
+                l'excellence technique.</p>
+        </div>
+    </footer>
+
 </body>
+
 </html>
