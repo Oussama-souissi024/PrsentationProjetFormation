@@ -6,7 +6,7 @@ Ce dépôt contient les documents de présentation pour la formation **.NET Ecom
 
 - `docs/` - Documents de présentation
   - `index.html` - Page web de présentation de la formation
-  - `Formation-E-Commerce-Full-Stack-NET.pdf` - Document PDF détaillé
+  - `Formation-NET-Full-Stack.pdf` - Document PDF détaillé
 
 ## 🌐 Page de présentation
 
@@ -14,9 +14,12 @@ La page web présente :
 - 📖 Présentation complète de la formation
 - 🎯 Objectifs pédagogiques (Développeur .NET Junior)
 - 📊 Compétences acquises (100% couverture Junior .NET)
-- 🛠️ Projets de formation (MVC + Extension API)
+- 🛠️ Projets de formation :
+  - **Formation Principale (35h) :** 200 DT (ou 2 × 120 DT) - Architecture MVC & Clean Architecture
+  - **Extension API Client / Serveur (15h) :** 100 DT - Découplage API & Sécurisation JWT
+- 📅 **Prochaine session :** 1er octobre 2026
 - 🏗️ Architecture enseignée (Clean Architecture)
-- 💰 Tarifs et méthodes de paiement
+- 💰 Tarifs et méthodes de paiement (D17, Mandat Postal, Wafacash / IZI)
 - 🎬 Extraits vidéo des séances
 - 📞 Coordonnées de contact
 

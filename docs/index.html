@@ -431,8 +431,9 @@
             <div class="grid">
                 <div class="info-item">
                     <h3>📅 Dates & Durée</h3>
-                    <p><strong>Début :</strong> 20 avril 2026</p>
-                    <p><strong>Total :</strong> 35 heures</p>
+                    <p><strong>Début :</strong> 1er octobre 2026</p>
+                    <p><strong>Formation Principale :</strong> 35 heures</p>
+                    <p><strong>Extension API Client / Serveur :</strong> 15 heures</p>
                     <p><strong>Format :</strong> 50% Théorie / 50% Coding</p>
                 </div>
                 <div class="info-item">
@@ -447,17 +448,7 @@
         <!-- Vidéos & PDF -->
         <section class="card">
             <h2 class="section-title"><i class="fas fa-play-circle"></i> Aperçu & Ressources</h2>
-            <div class="grid">
-                <div class="video-card">
-                    <div class="video-thumb"
-                        onclick="window.open('https://drive.google.com/file/d/1_tMx-PYoSm_HNUxkh6T59OJhKaSCTS5Z/view?usp=sharing', '_blank')">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <div class="video-body">
-                        <h3>Extrait Séance 10</h3>
-                        <p>Méthodologie pédagogique</p>
-                    </div>
-                </div>
+            <div class="grid" style="max-width: 550px; margin: 0 auto;">
                 <div class="video-card">
                     <div class="video-thumb" style="background: var(--accent)"
                         onclick="window.open('https://drive.google.com/file/d/1RR2hlncPZ4F3H0fYN07XcEX3iA4CX79r/view?usp=sharing', '_blank')">
@@ -465,7 +456,7 @@
                     </div>
                     <div class="video-body">
                         <h3>Extrait Séance 18</h3>
-                        <p>Concepts avancés Clean Arch</p>
+                        <p>Concepts avancés Clean Architecture & Live Coding</p>
                     </div>
                 </div>
             </div>
@@ -506,9 +497,31 @@
         <!-- Tarifs -->
         <section id="tarifs" class="pricing-box">
             <h2 style="color: var(--secondary); margin-bottom: 10px;">Investissez dans votre futur</h2>
-            <p>Une formation intensive pour un prix accessible.</p>
-            <div class="price-tag">200 <span>DT</span></div>
-            <p style="margin-bottom: 30px;">Ou <strong>2 × 120 DT</strong> pour plus de flexibilité.</p>
+            <p style="margin-bottom: 30px;">Des formules intensives adaptées à vos besoins professionnels.</p>
+            
+            <div class="grid" style="text-align: center; margin-bottom: 35px;">
+                <!-- Formation Principale -->
+                <div style="background: rgba(255,255,255,0.06); padding: 30px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <span style="background: var(--secondary); color: var(--dark); font-size: 0.8rem; font-weight: 800; padding: 5px 14px; border-radius: 20px; text-transform: uppercase;">Parcours Principal</span>
+                        <h3 style="color: white; margin-top: 15px; font-size: 1.3rem;">Formation .NET E-Commerce</h3>
+                        <p style="opacity: 0.85; font-size: 0.95rem; margin-top: 8px;"><strong>35 Heures</strong> (MVC & Clean Architecture)</p>
+                        <div class="price-tag" style="margin: 15px 0;">200 <span>DT</span></div>
+                        <p style="font-size: 0.95rem; opacity: 0.9;">Facilité : <strong>2 × 120 DT</strong></p>
+                    </div>
+                </div>
+
+                <!-- Extension API -->
+                <div style="background: rgba(255,255,255,0.06); padding: 30px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <span style="background: var(--accent); color: white; font-size: 0.8rem; font-weight: 800; padding: 5px 14px; border-radius: 20px; text-transform: uppercase;">Module Complémentaire</span>
+                        <h3 style="color: white; margin-top: 15px; font-size: 1.3rem;">Extension API Client / Serveur</h3>
+                        <p style="opacity: 0.85; font-size: 0.95rem; margin-top: 8px;"><strong>15 Heures</strong> (Découplage API & Sécurisation JWT)</p>
+                        <div class="price-tag" style="margin: 15px 0;">100 <span>DT</span></div>
+                        <p style="font-size: 0.95rem; opacity: 0.9;">Tarif fixe module spécialisé</p>
+                    </div>
+                </div>
+            </div>
 
             <div class="grid" style="text-align: left; margin-bottom: 40px; max-width: 600px; margin: 0 auto 40px;">
                 <div
@@ -535,7 +548,7 @@
         <section class="card">
             <h2 class="section-title"><i class="fas fa-user-tie"></i> Votre Formateur</h2>
             <div class="profile-card">
-                <img src="C:/Users/oussa/OneDrive/Desktop/PrsentationProjetFormationPdf/1768238679486.jpg"
+                <img src="../1768238679486.jpg"
                     alt="Oussama Souissi" class="profile-img" style="object-fit: cover;">
                 <div>
                     <h3>Oussama Souissi</h3>
