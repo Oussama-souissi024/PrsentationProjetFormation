@@ -15,9 +15,9 @@ La page web présente :
 - 🎯 Objectifs pédagogiques (Développeur .NET Junior)
 - 📊 Compétences acquises (100% couverture Junior .NET)
 - 🛠️ Projets de formation :
-  - **Formation Principale (35h) :** 200 DT (ou 2 × 120 DT) - Architecture MVC & Clean Architecture
+  - **Formation Principale (35h) :** 500 DT (ou 2 × 300 DT) - Architecture MVC & Clean Architecture
   - **Extension API Client / Serveur (15h) :** 100 DT - Découplage API & Sécurisation JWT
-- 📅 **Prochaine session :** 1er octobre 2026
+- 📅 **Prochaine session :** 5 novembre 2026
 - 🏗️ Architecture enseignée (Clean Architecture)
 - 💰 Tarifs et méthodes de paiement (D17, Mandat Postal, Wafacash / IZI)
 - 🎬 Extraits vidéo des séances
